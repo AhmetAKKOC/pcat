@@ -1,3 +1,14 @@
-const func = function () {
-  console.log('çalıştı');
-};
+const express = require('express');
+const path = 'path';
+
+const app = express();
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'temp/index.html'));
+});
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Sunucu ${port} portunda başlatıldı..`);
+});
